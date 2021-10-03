@@ -1,3 +1,5 @@
+const FIRE_API_KEY = "6159bbddf524e3b8264d43ef"
+const FIRE_ENDPOINT = "http://localhost:3003/api/apis/generate"
 const CHANNEL_NAME = "fireOAuthChannel"
 const broadCastingChannel = new BroadcastChannel(CHANNEL_NAME)
 
@@ -6,7 +8,7 @@ let qr
 async function getSessionID() {
 	let response
 	try {
-		response = await fetch(`${FIREENDPOINT}/${FIREAPI}`, {
+		response = await fetch(`${FIRE_ENDPOINT}/${FIRE_API_KEY}`, {
 			method: "GET",
 			headers: {
 				"Content-Type": "application/json",
