@@ -20,7 +20,6 @@ async function getSessionID() {
 
     let data = await response.json()
     let { sessionId,  chatRoomId } = data
-    console.log(data)
     return { sessionId, chatRoomId }
 }
 
@@ -28,6 +27,7 @@ function generateQR(value) {
 	(qr = new QRious({
 		element: document.getElementById("qr-code"),
 		size: 200,
+        level: 'M',
 		value: value,
 	}))
 }
@@ -37,3 +37,11 @@ function changeHREF ({sessionId, chatRoomId}) {
     let a = document.getElementById("authorizeOverLink")
     a.href = url
 }
+
+async function fire() {
+    let { sessionId, chatRoomId } = await getSessionID()
+    generateQR(sessionId)
+    changeHREF({sessionId, chatRoomId})
+}
+
+fire()
