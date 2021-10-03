@@ -1,6 +1,22 @@
 const FIREAPI = "6159bbddf524e3b8264d43ef"
 const FIREENDPOINT = "http://localhost:3003/api/apis/generate"
 const channel = new BroadcastChannel("my_bus")
-channel.addEventListener("message", (event) => {
-	console.log(event.data)
-})
+async function getSessionID() {
+	let response
+	try {
+		response = await fetch(`${FIREENDPOINT}/${FIREAPI}`, {
+			method: "GET",
+			headers: {
+				"Content-Type": "application/json",
+			}
+		})
+	} catch (error) {
+		console.log(error)
+        return alert("Something Went Wrong")
+	}
+
+    let data = await response.json()
+    let { sessionId,  chatRoomId } = data
+    console.log(data)
+    return { sessionId, chatRoomId }
+}
