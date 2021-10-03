@@ -1,6 +1,5 @@
-const FIREAPI = "6159bbddf524e3b8264d43ef"
-const FIREENDPOINT = "http://localhost:3003/api/apis/generate"
-const channel = new BroadcastChannel("my_bus")
+const CHANNEL_NAME = "fireOAuthChannel"
+const broadCastingChannel = new BroadcastChannel(CHANNEL_NAME)
 
 let qr
 

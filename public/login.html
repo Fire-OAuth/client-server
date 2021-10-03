@@ -23,10 +23,18 @@
         </div>
     </div>
     <script>
-        const channel = new BroadcastChannel('my_bus');
-        channel.addEventListener('message', event => {
-            console.log(event.data);
-            });
+        const fireBroadcastingChannel = new BroadcastChannel('fireOAuthChannel');
+        fireBroadcastingChannel.addEventListener('message', event => {
+            // event.data is the message sent from the fireOAuthChannel after verification
+            // The Data will likely to have the data of the user or the error message with the success code
+            // if success == 1 then the data will be the user data
+            // if success == 0 then the data will be the error message
+            
+            // It is the responsibility of the developer to handle the data
+            // Right now I am just printing it to the console
+
+            console.log(event.data)
+        })
     </script>
 </body>
 </html>
