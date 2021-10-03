@@ -1,6 +1,9 @@
 const FIREAPI = "6159bbddf524e3b8264d43ef"
 const FIREENDPOINT = "http://localhost:3003/api/apis/generate"
 const channel = new BroadcastChannel("my_bus")
+
+let qr
+
 async function getSessionID() {
 	let response
 	try {
@@ -20,3 +23,12 @@ async function getSessionID() {
     console.log(data)
     return { sessionId, chatRoomId }
 }
+
+function generateQR(value) {
+	(qr = new QRious({
+		element: document.getElementById("qr-code"),
+		size: 200,
+		value: value,
+	}))
+}
+
