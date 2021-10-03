@@ -32,3 +32,8 @@ function generateQR(value) {
 	}))
 }
 
+function changeHREF ({sessionId, chatRoomId}) {
+    let url = `https://firepwa.netlify.app/authorize.html?sessionId=${sessionId}&chatRoomId=${chatRoomId}`
+    let a = document.getElementById("authorizeOverLink")
+    a.href = url
+}
