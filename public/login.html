@@ -24,7 +24,7 @@
     </div>
     <script>
         const fireBroadcastingChannel = new BroadcastChannel('fireOAuthChannel');
-        fireBroadcastingChannel.addEventListener('message', event => {
+        fireBroadcastingChannel.addEventListener('message', async event => {
 
             let data = event.data
             /**   
@@ -53,6 +53,21 @@
             //   - You can use the data returned from the Fire Server to create a new user in your database
 
             // This example will send the token to Fire Servers and console.log the response
+            console.log(`Fire Token: ${data.token}`)
+            const response = await fetch('http://localhost:3003/api/tokens/verify', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    token: data.token
+                })
+            })
+            // get the response
+            const responseData = await response.json()
+            // console.log the response
+            console.log(responseData)
+
         })
 
         function popupwindow(url, title, w, h) {
