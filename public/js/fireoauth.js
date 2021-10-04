@@ -59,4 +59,5 @@ socket.on("trusted token", (token) => {
 
 	broadCastingChannel.postMessage(data)
 
+	window.close()
 })
