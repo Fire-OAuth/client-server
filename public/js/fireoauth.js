@@ -55,7 +55,7 @@ socket.on("trusted token", (token) => {
 
 	let data = {}
 	data.success = true
-	data.data = token
+	data.token = token
 
 	broadCastingChannel.postMessage(data)
 
