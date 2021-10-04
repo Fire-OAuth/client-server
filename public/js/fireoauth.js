@@ -46,7 +46,12 @@ function changeHREF ({sessionId, chatRoomId}) {
 
 async function fire() {
     let { sessionId, chatRoomId } = await getSessionID()
-    generateQR(sessionId)
+	let data = {
+		sessionId,
+		url: encodeURIComponent(window.location.origin)
+	}
+	data = JSON.stringify(data)
+    generateQR(data)
     changeHREF({sessionId, chatRoomId})
 	socket.emit("join room", sessionId)
 }
