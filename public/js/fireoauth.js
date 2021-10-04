@@ -37,7 +37,9 @@ function generateQR(value) {
 
 function changeHREF ({sessionId, chatRoomId}) {
     let firePwaUrlHostname = "http://localhost:5500"
-    let url = `${firePwaUrlHostname}/authorize.html?sessionId=${sessionId}&chatRoomId=${chatRoomId}`
+	let originURL = encodeURIComponent(window.location.origin)
+
+    let url = `${firePwaUrlHostname}/authorize.html?sessionId=${sessionId}&chatRoomId=${chatRoomId}&url=${originURL}`
     let a = document.getElementById("authorizeOverLink")
     a.href = url
 }
