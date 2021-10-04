@@ -46,6 +46,7 @@ async function fire() {
     let { sessionId, chatRoomId } = await getSessionID()
     generateQR(sessionId)
     changeHREF({sessionId, chatRoomId})
+	socket.emit("join room", sessionId)
 }
 
 fire()
