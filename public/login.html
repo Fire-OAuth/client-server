@@ -24,8 +24,9 @@
     </div>
     <script>
         const fireBroadcastingChannel = new BroadcastChannel('fireOAuthChannel');
-        fireBroadcastingChannel.addEventListener('message', data => {
+        fireBroadcastingChannel.addEventListener('message', event => {
 
+            let data = event.data
             /**   
             * @typedef {Object<string, any>} Data
             * @property {boolean} success - Whether the login was successful
@@ -35,7 +36,7 @@
 
 
             // data.token is the message sent from the fireOAuthChannel after verification
-            // event.success is a boolean that indicates whether the verification was successful
+            // data.success is a boolean that indicates whether the verification was successful
             // data.token is the fire token
             
             // What to do with the Fire Token?
