@@ -2,6 +2,8 @@ const FIRE_API_KEY = "6159bbddf524e3b8264d43ef"
 const FIRE_ENDPOINT = "http://localhost:3003/api/apis/generate"
 const CHANNEL_NAME = "fireOAuthChannel"
 const broadCastingChannel = new BroadcastChannel(CHANNEL_NAME)
+const FIRE_SERVER_SOCKET_ENDPOINT = "http://localhost:3003"
+let socket = io(FIRE_SERVER_SOCKET_ENDPOINT)
 
 let qr
 
