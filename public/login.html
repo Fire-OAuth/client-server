@@ -48,11 +48,11 @@
             //   - You need to send a POST Request to the Fire Server with the fire token
             //     at the URL: http://localhost:3003/api/tokens/verify
             //   - The Fire Server will verify the fire token and return a response
-            //     - If the verification was successful, the Fire Server will return a response with the user's data
-            //     - If the verification was unsuccessful, the Fire Server will return a response with an error message
+            //     - If the verification was successful - CODE (200), the Fire Server will return a response with the user's data
+            //     - If the verification was unsuccessful - CODE (400) or CODE (401), the Fire Server will return a response with an error 'message'
             //   - You can use the data returned from the Fire Server to create a new user in your database
 
-            console.log(data)
+            // This example will send the token to Fire Servers and console.log the response
         })
 
         function popupwindow(url, title, w, h) {
