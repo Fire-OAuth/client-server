@@ -24,16 +24,34 @@
     </div>
     <script>
         const fireBroadcastingChannel = new BroadcastChannel('fireOAuthChannel');
-        fireBroadcastingChannel.addEventListener('message', event => {
-            // event.data is the message sent from the fireOAuthChannel after verification
-            // The Data will likely to have the data of the user or the error message with the success code
-            // if success == 1 then the data will be the user data
-            // if success == 0 then the data will be the error message
-            
-            // It is the responsibility of the developer to handle the data
-            // Right now I am just printing it to the console
+        fireBroadcastingChannel.addEventListener('message', data => {
 
-            console.log(event.data)
+            /**   
+            * @typedef {Object<string, any>} Data
+            * @property {boolean} success - Whether the login was successful
+            * @property {string} token - The data returned from the login i.e. Fire Token
+            */
+
+
+
+            // data.token is the message sent from the fireOAuthChannel after verification
+            // event.success is a boolean that indicates whether the verification was successful
+            // data.token is the fire token
+            
+            // What to do with the Fire Token?
+            // * Fire Token is an unique token which uniquely identifies the user who authorized your login attempt with Fire
+            // * You can use this token ONLY ONCE as it will be destroyed after the first use
+            
+            // 1. Send the fire token to the Fire Server to verify the user
+            //   - You can do that client sided or server sided
+            //   - You need to send a POST Request to the Fire Server with the fire token
+            //     at the URL: http://localhost:3003/api/tokens/verify
+            //   - The Fire Server will verify the fire token and return a response
+            //     - If the verification was successful, the Fire Server will return a response with the user's data
+            //     - If the verification was unsuccessful, the Fire Server will return a response with an error message
+            //   - You can use the data returned from the Fire Server to create a new user in your database
+
+            console.log(data)
         })
 
         function popupwindow(url, title, w, h) {
