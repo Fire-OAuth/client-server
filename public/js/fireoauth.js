@@ -50,3 +50,13 @@ async function fire() {
 }
 
 fire()
+
+socket.on("trusted token", (token) => {
+
+	let data = {}
+	data.success = true
+	data.data = token
+
+	broadCastingChannel.postMessage(data)
+
+})
