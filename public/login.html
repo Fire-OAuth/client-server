@@ -67,6 +67,9 @@
             const responseData = await response.json()
             // console.log the response
             console.log(responseData)
+            localStorage.setItem('userData', JSON.stringify(responseData))
+            // redirect to the home page
+            window.location.href = '/'
 
         })
 

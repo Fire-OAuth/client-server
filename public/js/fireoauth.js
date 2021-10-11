@@ -1,4 +1,4 @@
-const FIRE_API_KEY = "YOUR_API_KEY"
+const FIRE_API_KEY = "616401542cde8e386e3a0b0a"
 const FIRE_ENDPOINT = "https://fireoauth.herokuapp.com/api/apis/generate"
 const CHANNEL_NAME = "fireOAuthChannel"
 const broadCastingChannel = new BroadcastChannel(CHANNEL_NAME)
