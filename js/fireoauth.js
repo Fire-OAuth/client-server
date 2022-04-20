@@ -45,7 +45,9 @@ function changeHREF ({sessionId, chatRoomId}) {
 }
 
 async function fire() {
+	NProgress.set(0.4)
     let { sessionId, chatRoomId } = await getSessionID()
+	NProgress.done()
 	let data = {
 		sessionId,
 		url: encodeURIComponent(window.location.origin)
