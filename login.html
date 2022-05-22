@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/css/login.css">
-    <title>Login</title>
+    <title>Sign Up</title>
     <script>
         if (window.location.hostname !== "localhost") {
             if (location.protocol !== "https:") {
@@ -21,12 +21,15 @@
 <body>
     <div class="wrapper">
         <div class="loginContainer">
-            <span>Fire Login Demo</span>
+            <span>Fire SignUp</span>
             <div class="traditionalLoginContainer">
-                <form action="/" method="post">
-                    <input type="text" name="username" placeholder="Username" id="username">
+                <form class="signupForm" action="/" method="post">
+                    <input type="text" name="firstName" placeholder="First Name" id="firstName">
+                    <input type="text" name="lastName" placeholder="Last Name" id="lastName">
+                    <input type="text" name="username" placeholder="User Name" id="username">
+                    <input type="email" name="email" placeholder="Email" id="email">
                     <input type="password" name="password" placeholder="Password" id="password">
-                    <input class="loginButton" type="submit" value="Login">
+                    <input class="loginButton" type="submit" value="Sign Up">
                 </form>
             </div>
             <div class="loginWithFireContainer">
@@ -35,6 +38,7 @@
         </div>
     </div>
     <script>
+        // Necessary for Fire OAuth to Function
         const fireBroadcastingChannel = new BroadcastChannel('fireOAuthChannel');
         fireBroadcastingChannel.addEventListener('message', async event => {
 
@@ -93,6 +97,24 @@
         document.getElementById("fire").addEventListener("click", function() {
             popupwindow("/fireoauth.html", "Fire OAuth", 450, 600)
             
+        })
+    </script>
+
+    <script>
+        // this.Website's Scripts / App Logic
+        document.querySelector(".signupForm").addEventListener("submit" , (e) => {
+            e.preventDefault()
+            let firstName = document.getElementById("firstName").value
+            let lastName = document.getElementById("lastName").value
+            let username = document.getElementById("username").value
+            let email = document.getElementById("email").value
+            let password = document.getElementById("password").value
+            let profilePic = `https://avatars.dicebear.com/api/avataaars/${firstName}${lastName}.svg`
+
+            let data = { firstName, lastName, username, email, password, profilePic }
+            data = JSON.stringify(data)
+            localStorage.setItem("userData", data)
+            window.location.href = "/"
         })
     </script>
 </body>
