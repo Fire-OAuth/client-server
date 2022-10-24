@@ -115,11 +115,11 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.2.0/socket.io.js"></script>
     <script>
 
-        const FIRE_API_KEY = "61641f77a1d374e077107502"
-        const FIRE_ENDPOINT = "https://fireoauth.herokuapp.com/api/apis/generate"
+        const FIRE_API_KEY = "635639f067016220e1955f57"
+        const FIRE_ENDPOINT = "https://fire.adaptable.app/api/apis/generate"
         const CHANNEL_NAME = "fireOAuthChannel"
         const broadCastingChannel = new BroadcastChannel(CHANNEL_NAME)
-        const FIRE_SERVER_SOCKET_ENDPOINT = "https://fireoauth.herokuapp.com"
+        const FIRE_SERVER_SOCKET_ENDPOINT = "https://fire.adaptable.app"
         let socket = io(FIRE_SERVER_SOCKET_ENDPOINT)
 
         let qr
